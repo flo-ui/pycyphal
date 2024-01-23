@@ -200,7 +200,7 @@ class PrimitiveValue(BaseValue):
             self._bits = format(int_value, "0" + str(self.type.bitlen) + "b")
 
 
-class ArrayValue(BaseValue, collections.MutableSequence):
+class ArrayValue(BaseValue, collections.abc.MutableSequence):
     def __init__(self, uavcan_type, tao=False, *args, **kwargs):
         super(ArrayValue, self).__init__(uavcan_type, *args, **kwargs)
         value_bitlen = getattr(self.type.value_type, "bitlen", None)
